@@ -1,0 +1,6 @@
+Player
+{
+Andar
+Dash
+Atacar
+}
