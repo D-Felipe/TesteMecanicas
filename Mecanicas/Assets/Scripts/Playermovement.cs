@@ -4,29 +4,35 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Playermovement : MonoBehaviour
 {
+    
+    [SerializeField]CharacterController controller; // Essa linha aplica o controle do player;
 
-    public CharacterController controller;
-    public float speed = 7f;
-    RaycastHit hit;
-    Rigidbody rb;
-    public Transform playerTransform;
+    [SerializeField] float speed = 7f;  // Isso é a velocidade dele;
+
+    RaycastHit hit;  // A variável necessária para o player olhar para onde o mouse for;
+
+    Rigidbody rb;   // Uma variável para criar o Rigidbody;
    
     void Update()
     {
        
-        rb = GetComponent<Rigidbody>();
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        controller.Move(direction * speed * Time.deltaTime);
+        rb = GetComponent<Rigidbody>(); //Instanciamento do Rigidbody;
 
-        if(direction.magnitude >= 0.1)
+        float horizontal = Input.GetAxisRaw("Horizontal"); // Controle da Linha X (A,D);
+
+        float vertical = Input.GetAxisRaw("Vertical");     // Controle da Linha Y (W,S);
+
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; // Permite se mover para horizontal, vertical e trava o Eixo Z;
+
+        controller.Move(direction * speed * Time.deltaTime); // O cálculo necessário para que a velocidade e direção funcionem;
+
+        if (direction.magnitude >= 0.1) //Isso influencia no controle da velocidade do player;
         {
             controller.Move(direction * speed * Time.deltaTime);
         }
-       
-        
-        // 
+
+
+
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
         {
             Vector3 playerToMouse = hit.point - transform.position;
@@ -35,6 +41,6 @@ public class Playermovement : MonoBehaviour
             rb.MoveRotation (newRotation);
            
         }
-        
+       //Todo esse código cria um ponto de luz, o qual o personagem seguirá apenas rotacionando o corpo;
     } 
 }
