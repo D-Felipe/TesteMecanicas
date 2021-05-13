@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
 [SerializeField] string nomeCena;
+
     public void changeS()
     {
         SceneManager.LoadScene(nomeCena);

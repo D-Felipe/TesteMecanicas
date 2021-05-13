@@ -6,13 +6,14 @@ public class Playermovement : MonoBehaviour
 {
     
     [SerializeField]CharacterController controller; // Essa linha aplica o controle do player;
+    [SerializeField] float speed = 7f;  // Isso ï¿½ a velocidade dele;
 
-    [SerializeField] float speed = 7f;  // Isso é a velocidade dele;
+    RaycastHit hit;  // A variï¿½vel necessï¿½ria para o player olhar para onde o mouse for;
 
-    RaycastHit hit;  // A variável necessária para o player olhar para onde o mouse for;
+    Rigidbody rb;   // Uma variï¿½vel para criar o Rigidbody;
 
-    Rigidbody rb;   // Uma variável para criar o Rigidbody;
-   
+    public Transform playerTransform;
+    public Vector3 direction;
     void Update()
     {
        
@@ -23,8 +24,10 @@ public class Playermovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");     // Controle da Linha Y (W,S);
 
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; // Permite se mover para horizontal, vertical e trava o Eixo Z;
+        controller.Move(direction * speed * Time.deltaTime);
 
-        controller.Move(direction * speed * Time.deltaTime); // O cálculo necessário para que a velocidade e direção funcionem;
+
+        controller.Move(direction * speed * Time.deltaTime); // O cï¿½lculo necessï¿½rio para que a velocidade e direï¿½ï¿½o funcionem;
 
         if (direction.magnitude >= 0.1) //Isso influencia no controle da velocidade do player;
         {
@@ -41,6 +44,8 @@ public class Playermovement : MonoBehaviour
             rb.MoveRotation (newRotation);
            
         }
-       //Todo esse código cria um ponto de luz, o qual o personagem seguirá apenas rotacionando o corpo;
+
+       //Todo esse cï¿½digo cria um ponto de luz, o qual o personagem seguirï¿½ apenas rotacionando o corpo;
+
     } 
 }
