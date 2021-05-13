@@ -10,6 +10,7 @@ public class Playermovement : MonoBehaviour
     RaycastHit hit;
     Rigidbody rb;
     public Transform playerTransform;
+    public Vector3 direction;
    
     void Update()
     {
@@ -17,7 +18,7 @@ public class Playermovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        direction = new Vector3(horizontal, 0f, vertical).normalized;
         controller.Move(direction * speed * Time.deltaTime);
 
         if(direction.magnitude >= 0.1)
@@ -35,6 +36,5 @@ public class Playermovement : MonoBehaviour
             rb.MoveRotation (newRotation);
            
         }
-        
     } 
 }
