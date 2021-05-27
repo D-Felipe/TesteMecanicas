@@ -5,12 +5,14 @@ using UnityEngine;
 public class Playermovement : MonoBehaviour
 {
     
-    [SerializeField]CharacterController controller; // Essa linha aplica o controle do player;
-    [SerializeField] float speed = 7f;  // Isso � a velocidade dele;
+    [SerializeField] public CharacterController controller; // Essa linha aplica o controle do player;
+    [SerializeField] float speed = 7f;  // Isso é a velocidade dele;
 
-    RaycastHit hit;  // A vari�vel necess�ria para o player olhar para onde o mouse for;
+    RaycastHit hit;  // A variável necessária para o player olhar para onde o mouse for;
 
     Rigidbody rb;   // Uma vari�vel para criar o Rigidbody;
+
+
 
     public Transform playerTransform;
     public Vector3 direction;
@@ -33,7 +35,6 @@ public class Playermovement : MonoBehaviour
         {
             controller.Move(direction * speed * Time.deltaTime);
         }
-
 
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
