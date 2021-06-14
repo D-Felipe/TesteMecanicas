@@ -36,9 +36,9 @@ public class PlayerHealth : MonoBehaviour
           Debug.Log("OH NO!"); // Texto que aparecerá no Console após colisão com o objeto;
           TakeDamage(20); 
           
-          if(currentHealth==0) 
+          if(currentHealth<=0) 
           {
-              Destroy(gameObject);  
+              Debug.Log("you died :(");  
           }
 
         }

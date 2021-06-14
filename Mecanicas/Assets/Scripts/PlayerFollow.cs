@@ -6,24 +6,24 @@ public class PlayerFollow : MonoBehaviour
 {
     
 
-   public Transform playerTransform; //Variável usada para controlar a posição da câmera;
+   public Transform playerTransform; //Variavel usada para controlar a posicao da camera;
 
-   Vector3 cameraOffset;    // Variável ligada à câmera principal;
+   Vector3 cameraOffset;    // Variavel ligada a camera principal;
 
    [Range(0.01f, 1.0f)] //Isso aqui cria um slider para mexer no SmoothFactor;
 
-   [SerializeField] float smoothFactor = 0.5f; //Minha variável favorita. Ela é usada pra criar um efeito suave da câmera enquanto o player se move;
+   [SerializeField] float smoothFactor = 0.5f; //Minha variavel favorita. Ela e usada pra criar um efeito suave da cï¿½mera enquanto o player se move;
 
     
     void Start()
     {
-        cameraOffset = transform.position - playerTransform.position; //Isso aqui vai estavelecer a posição da câmera ao iniciar o game;
+        cameraOffset = transform.position - playerTransform.position; //Isso aqui vai estavelecer a posicao da cï¿½mera ao iniciar o game;
     }
 
  
     void LateUpdate()
     {
-        Vector3 newPos = playerTransform.position + cameraOffset; //Já essa belezinha aqui, manterá a câmera seguindo o player;
-        transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor); //Sabe o efeito? Então, isso aqui cria ele nos eixos;
+        Vector3 newPos = playerTransform.position + cameraOffset; //Jï¿½ essa belezinha aqui, manterï¿½ a cï¿½mera seguindo o player;
+        transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor); //Sabe o efeito? Entï¿½o, isso aqui cria ele nos eixos;
     }
 }
