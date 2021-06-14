@@ -1,6 +1,3 @@
-# TesteMecanicas
-Testando mecânicas básicas para introduzir em outros projetos.
+##Bom-Dia##
 
-1. Movimentação
-
-Tenha um bom dia.
+Esse projeto é, na verdade, um jogo desenvolvido por estudantes para a matéria de PI com finalidade de aprender e aprimorar nossos conhecimentos sobre a Unity 3D.
