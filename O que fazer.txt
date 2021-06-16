@@ -1,6 +1,0 @@
-Player
-{
-Andar
-Dash
-Atacar
-}
