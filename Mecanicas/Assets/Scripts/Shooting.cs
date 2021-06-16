@@ -12,7 +12,7 @@ public class Shooting : MonoBehaviour
    
     void Update()
     {
-        if(PauseMenu.GameIsPaused == false){
+        if(MenuController.GameIsPaused == false){
         if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
