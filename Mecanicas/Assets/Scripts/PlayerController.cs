@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    Shooting shooting;
     [SerializeField] public CharacterController controller; // Essa linha aplica o controle do player;
     [SerializeField] float speed = 7f;  // Isso é a velocidade dele;
     RaycastHit hit;  // A variável necessária para o player olhar para onde o mouse for;
     Rigidbody rb;   // Uma variavel para criar o Rigidbody;
     public Transform playerTransform;
     public Vector3 direction;
-    // public List<string> inventory;
+
     public HealthBarScript Healthbar;
     public int maxHealth =100;
     public int currentHealth;
+
+    public int ammoitem;
+    public int cura;
+
     void Start(){   
         currentHealth = maxHealth;
         Healthbar.SetMaxHealth(maxHealth);
-        // inventory = new List<string>();
     }
     
     public void TakeDamage(int damage){
@@ -28,24 +32,30 @@ public class PlayerController : MonoBehaviour
     {
         if(collisionInfo.gameObject.name == "Enemy") //Pega o nome do objeto com qual o player irá colidir;
         {
-          Debug.Log("OH NO!"); // Texto que aparecerá no Console após colisão com o objeto;
-          TakeDamage(20); 
-          
+                   TakeDamage(20); 
+           Debug.Log("Take Damage:"+currentHealth); // Texto que aparecerá no Console após colisão com o objeto;
+
           if(currentHealth<=0) 
           {
               Debug.Log("you died :(");  
           }
         }
     }
-    // void OnTriggerEnter(Collider collider){
-    //     if(collider.CompareTag("collectable")){
-    //     string itemType = collider.gameObject.GetComponent<ItemManager>().itemType;
-    //     print("PickUp:"+ itemType);
-    //     inventory.Add(itemType);
-    //     print("Inventory lenght:"+inventory.Count);
-    //     Destroy(collider.gameObject);
-    //     }         
-    // }
+    void OnTriggerEnter(Collider collider){
+        if(collider.CompareTag("life")){//esse aqui é o nosso item de vida
+            currentHealth= currentHealth + cura;
+            Healthbar.SetHealth(currentHealth);
+             print("life recuperada:"+currentHealth);
+            Destroy(collider.gameObject);
+        }   
+        // if(collider.CompareTag("ammo")){//esse aqui é o nossa bala
+        //     currentHealth= currentHealth + cura;
+
+        //      print("life recuperada:"+currentHealth);
+        //     Destroy(collider.gameObject);
+        // }       
+     
+    }
     void Update()
     {
         rb = GetComponent<Rigidbody>(); //Instanciamento do Rigidbody;
