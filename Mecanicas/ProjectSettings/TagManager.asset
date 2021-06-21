@@ -6,11 +6,13 @@ TagManager:
   tags:
   - life
   - lifesqn
+  - LongRange
+  - Ammo
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
