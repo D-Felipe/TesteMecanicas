@@ -46,7 +46,7 @@ public class Shooting : MonoBehaviour
     IEnumerator Reload(){
         if(Input.GetKeyDown(KeyCode.R)){
         isReloading=true;
-        Debug.Log("Realoding");
+        Debug.Log("Reloading");
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
         isReloading = false;
