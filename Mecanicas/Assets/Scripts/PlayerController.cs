@@ -28,11 +28,11 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;  
         Healthbar.SetHealth(currentHealth);
     }
-    void OnCollisionEnter(Collision collisionInfo) //Ativa a detecção de colisão;
-    {
-        if(collisionInfo.gameObject.name == "Enemy") //Pega o nome do objeto com qual o player irá colidir;
+    
+    void OnTriggerEnter(Collider collider){
+        if(collider.gameObject.name == "Enemy") //Pega o nome do objeto com qual o player irá colidir;
         {
-                   TakeDamage(20); 
+            TakeDamage(20); 
            Debug.Log("Take Damage:"+currentHealth); // Texto que aparecerá no Console após colisão com o objeto;
 
           if(currentHealth<=0) 
@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
               Debug.Log("You Died");  
           }
         }
-    }
-    void OnTriggerEnter(Collider collider){
         if(collider.CompareTag("life")){//esse aqui é o nosso item de vida
             currentHealth= currentHealth + cura;
             Healthbar.SetHealth(currentHealth);
