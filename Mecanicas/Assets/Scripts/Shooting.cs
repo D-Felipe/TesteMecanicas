@@ -44,7 +44,7 @@ public class Shooting : MonoBehaviour
         Destroy(Bullet, 1.0f);
     }
     IEnumerator Reload(){
-        if(Input.GetKeyDown(KeyCode.R)){
+        if(Input.GetKeyDown(KeyCode.Mouse1)){
         isReloading=true;
         Debug.Log("Reloading");
         yield return new WaitForSeconds(reloadTime);

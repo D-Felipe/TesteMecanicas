@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 direction;
 
     public HealthBarScript Healthbar;
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
 
     public int ammoitem;
     public int cura;
