@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public EnemyData data;
+    public Data data;
     public float currentHealth;
     public Transform Player;
     public NavMeshAgent Agent;
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Agent.destination = Player.position;
-        Agent.destination *= data.speed;
+        // Agent.destination *= data.speed;
         //if(Agent.destination == Player.position)
         //{
 
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
     
     
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(float damage){
         currentHealth -= damage;  
         Debug.Log("hit:" + damage+" currenthealth:"+currentHealth);
     }

@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d68eeab0a73d6ea42ab914e3d00ea6e7, type: 3}
-  m_Name: NormalEnemy
+  m_Name: EGrass
   m_EditorClassIdentifier: 
-  MaxHealth: 10
-  speed: 2
-  damage: 1
-  myDropDown: 4
+  MaxHealth: 80
+  damage: 50
+  Tipo: 0

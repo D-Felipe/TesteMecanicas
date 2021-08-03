@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    Data data;
     Shooting shooting;
     [SerializeField] public CharacterController controller; // Essa linha aplica o controle do player;
     [SerializeField] float speed = 7f;  // Isso é a velocidade dele;
@@ -24,15 +25,16 @@ public class PlayerController : MonoBehaviour
         Healthbar.SetMaxHealth(maxHealth);
     }
     
-    public void TakeDamage(int damage){
+    public void TakeDamage(float damage){
+        damage = data.damage;
         currentHealth -= damage;  
         Healthbar.SetHealth(currentHealth);
     }
     
     void OnTriggerEnter(Collider collider){
-        if(collider.gameObject.name == "Enemy") //Pega o nome do objeto com qual o player irá colidir;
+        if(collider.gameObject.CompareTag( "Enemy")) //Pega o nome do objeto com qual o player irá colidir;
         {
-            TakeDamage(20); 
+            TakeDamage(data.damage); 
            Debug.Log("Take Damage:"+currentHealth); // Texto que aparecerá no Console após colisão com o objeto;
 
           if(currentHealth<=0) 
@@ -40,12 +42,12 @@ public class PlayerController : MonoBehaviour
               Debug.Log("You Died");  
           }
         }
-        if(collider.CompareTag("life")){//esse aqui é o nosso item de vida
-            currentHealth= currentHealth + cura;
-            Healthbar.SetHealth(currentHealth);
-             print("life recuperada:"+currentHealth);
-            Destroy(collider.gameObject);
-        }   
+        // if(collider.CompareTag("life")){//esse aqui é o nosso item de vida
+        //     currentHealth= currentHealth + cura;
+        //     Healthbar.SetHealth(currentHealth);
+        //      print("life recuperada:"+currentHealth);
+        //     Destroy(collider.gameObject);
+        // }   
         // if(collider.CompareTag("ammo")){//esse aqui é o nossa bala
         //     currentHealth= currentHealth + cura;
 
