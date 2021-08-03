@@ -5,18 +5,16 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    public Data data;
+    public float currentHealth;
     public Transform Player;
     public NavMeshAgent Agent;
     public LayerMask PlayerLayer;
     public Transform enemyFirePoint;
-    int damage = 10;
-    bool sla;
     void Start()
     {
         
-        currentHealth = maxHealth;
+        currentHealth = data.MaxHealth;
     }
     
      
@@ -26,7 +24,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Agent.destination = Player.position;
-        
+        // Agent.destination *= data.speed;
         //if(Agent.destination == Player.position)
         //{
 
@@ -49,17 +47,18 @@ public class Enemy : MonoBehaviour
 
     void Attack()
     {
-        FindObjectOfType<PlayerController>().maxHealth -= damage;
+        FindObjectOfType<PlayerController>().maxHealth -= data.damage;
 
     }
     
     
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(float damage){
         currentHealth -= damage;  
+        Debug.Log("hit:" + damage+" currenthealth:"+currentHealth);
     }
 
-    void OnCollisionEnter(Collision collisionInfo) //Ativa a detecção de colisão;
+    void OnTriggerEnter(Collider collisionInfo) //Ativa a detecção de colisão;
     {
         
         if(collisionInfo.gameObject.name == "Bullet(Clone)") //Pega o nome do objeto com qual o inimigo irá colidir;
@@ -68,7 +67,7 @@ public class Enemy : MonoBehaviour
           Debug.Log("OH NO!"); // Texto que aparecerá no Console após colisão com o objeto;
           TakeDamage(20); 
           
-          if(currentHealth==0) 
+          if(currentHealth<=0) 
           {
               Destroy(gameObject);  
           }
