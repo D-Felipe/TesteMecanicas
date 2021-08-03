@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GrassEnemy
   m_EditorClassIdentifier: 
   MaxHealth: 10
-  speed: 5
+  speed: 1
   damage: 3
   myDropDown: 1

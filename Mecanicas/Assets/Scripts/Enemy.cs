@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Agent.destination = Player.position;
-        
+        Agent.destination *= data.speed;
         //if(Agent.destination == Player.position)
         //{
 
