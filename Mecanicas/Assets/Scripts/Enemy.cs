@@ -6,16 +6,15 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public EnemyData data;
-    public float maxHealth = 100;
     public float currentHealth;
     public Transform Player;
     public NavMeshAgent Agent;
     public LayerMask PlayerLayer;
     public Transform enemyFirePoint;
-
     void Start()
     {
-        currentHealth = maxHealth;
+        
+        currentHealth = data.MaxHealth;
     }
     
      
@@ -55,8 +54,8 @@ public class Enemy : MonoBehaviour
     
 
     public void TakeDamage(int damage){
-        currentHealth -=  data.damage;  
-        Debug.Log("hit");
+        currentHealth -= damage;  
+        Debug.Log("hit:" + damage+" currenthealth:"+currentHealth);
     }
 
     void OnTriggerEnter(Collider collisionInfo) //Ativa a detecção de colisão;
@@ -68,7 +67,7 @@ public class Enemy : MonoBehaviour
           Debug.Log("OH NO!"); // Texto que aparecerá no Console após colisão com o objeto;
           TakeDamage(20); 
           
-          if(currentHealth==0) 
+          if(currentHealth<=0) 
           {
               Destroy(gameObject);  
           }

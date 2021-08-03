@@ -8,7 +8,7 @@ public class EnemyData : ScriptableObject
     
     public float MaxHealth = 10;
     public float speed = 2;
-    public float damage = 1;
+    public float damage = 50;
 public TypeEnemy myDropDown = new TypeEnemy();
 }
 public enum TypeEnemy
